@@ -11,7 +11,7 @@ func New[T int | string]() *Stack[T] {
 }
 
 func (s *Stack[T]) Top() (T, bool) {
-	if s == nil {
+	if s == nil || s.root == nil {
 		return linkedlist.Node[T]{}.Val, false
 	}
 
