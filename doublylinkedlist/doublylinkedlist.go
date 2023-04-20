@@ -33,3 +33,30 @@ func (d *DoublyLinkedList[T]) PrintListBackwards() {
 		cur = cur.Previous
 	}
 }
+func (d *DoublyLinkedList[T]) LeftPush(val T) {
+	newNode := &Node[T]{
+		Val: val,
+	}
+
+	if d.tail == nil {
+		d.tail = d.head
+	}
+
+	newNode.Next = d.head
+	d.head.Previous = newNode
+	d.head = newNode
+}
+
+func (d *DoublyLinkedList[T]) RightPush(val T) {
+	newNode := &Node[T]{
+		Val: val,
+	}
+
+	if d.tail == nil {
+		d.tail = d.head
+	}
+
+	d.tail.Next = newNode
+	newNode.Previous = d.tail
+	d.tail = newNode
+}
