@@ -38,8 +38,10 @@ func (d *DoublyLinkedList[T]) LeftPush(val T) {
 		Val: val,
 	}
 
-	if d.tail == nil {
+	if d.head == nil {
+		d.head = newNode
 		d.tail = d.head
+		return
 	}
 
 	newNode.Next = d.head
@@ -53,7 +55,9 @@ func (d *DoublyLinkedList[T]) RightPush(val T) {
 	}
 
 	if d.tail == nil {
-		d.tail = d.head
+		d.tail = newNode
+		d.head = d.tail
+		return
 	}
 
 	d.tail.Next = newNode

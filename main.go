@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 
+	"github.com/perfectgentlemande/go-data-structures/doublylinkedlist"
 	"github.com/perfectgentlemande/go-data-structures/linkedlist"
 	"github.com/perfectgentlemande/go-data-structures/queue"
 	"github.com/perfectgentlemande/go-data-structures/stack"
@@ -66,4 +67,20 @@ func main() {
 	v, ok = queue.Remove()
 	fmt.Printf("after removal v: %v ok: %v\n", v, ok)
 	fmt.Printf("queue is empty: %v\n", queue.IsEmpty())
+
+	dll := doublylinkedlist.New[int]()
+	dll.LeftPush(3)
+	dll.LeftPush(2)
+	dll.LeftPush(1)
+	fmt.Println("print")
+	dll.PrintList()
+	fmt.Println("print backwards")
+	dll.PrintListBackwards()
+	dll.RightPush(4)
+	dll.RightPush(5)
+	dll.RightPush(6)
+	fmt.Println("print")
+	dll.PrintList()
+	fmt.Println("print backwards")
+	dll.PrintListBackwards()
 }
