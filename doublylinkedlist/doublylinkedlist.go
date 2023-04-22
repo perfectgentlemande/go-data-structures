@@ -81,9 +81,39 @@ func (d *DoublyLinkedList[T]) RightTop() (T, bool) {
 }
 
 func (d *DoublyLinkedList[T]) LeftPop() (T, bool) {
+	if d == nil || d.head == nil {
+		return Node[T]{}.Val, false
+	}
 
+	cur := d.head.Val
+	if d.tail == d.head {
+		d.tail = nil
+	}
+
+	d.head = d.head.Next
+
+	if d.head != nil {
+		d.head.Previous = nil
+	}
+
+	return cur, true
 }
 
 func (d *DoublyLinkedList[T]) RightPop() (T, bool) {
+	if d == nil || d.tail == nil {
+		return Node[T]{}.Val, false
+	}
 
+	cur := d.tail.Val
+	if d.tail == d.head {
+		d.head = nil
+	}
+
+	d.tail = d.tail.Previous
+
+	if d.tail != nil {
+		d.tail.Next = nil
+	}
+
+	return cur, true
 }
