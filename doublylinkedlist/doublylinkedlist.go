@@ -64,3 +64,26 @@ func (d *DoublyLinkedList[T]) RightPush(val T) {
 	newNode.Previous = d.tail
 	d.tail = newNode
 }
+func (d *DoublyLinkedList[T]) LeftTop() (T, bool) {
+	if d == nil || d.head == nil {
+		return Node[T]{}.Val, false
+	}
+
+	return d.head.Val, true
+}
+
+func (d *DoublyLinkedList[T]) RightTop() (T, bool) {
+	if d == nil || d.tail == nil {
+		return Node[T]{}.Val, false
+	}
+
+	return d.tail.Val, true
+}
+
+func (d *DoublyLinkedList[T]) LeftPop() (T, bool) {
+
+}
+
+func (d *DoublyLinkedList[T]) RightPop() (T, bool) {
+
+}
