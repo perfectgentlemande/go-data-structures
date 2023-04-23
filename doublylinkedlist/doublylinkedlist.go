@@ -8,6 +8,37 @@ type Node[T int | string] struct {
 	Previous *Node[T]
 }
 
+func (d *DoublyLinkedList[T]) InsertBefore(val T, selectedNode *Node[T]) {
+	newNode := &Node[T]{
+		Val: val,
+	}
+
+	newNode.Next = selectedNode
+	if selectedNode.Previous != nil {
+		selectedNode.Previous.Next = newNode
+		newNode.Previous = selectedNode.Previous
+	}
+
+	selectedNode.Previous = newNode
+}
+func (d *DoublyLinkedList[T]) InsertAfter(val T, selectedNode *Node[T]) {
+	newNode := &Node[T]{
+		Val: val,
+	}
+
+	newNode.Previous = selectedNode
+	if selectedNode.Next != nil {
+		selectedNode.Next.Previous = newNode
+		newNode.Next = selectedNode.Next
+	}
+
+	selectedNode.Next = newNode
+
+	if selectedNode == d.tail {
+		d.tail = newNode
+	}
+}
+
 type DoublyLinkedList[T int | string] struct {
 	head *Node[T]
 	tail *Node[T]
@@ -116,4 +147,15 @@ func (d *DoublyLinkedList[T]) RightPop() (T, bool) {
 	}
 
 	return cur, true
+}
+
+func (d *DoublyLinkedList[T]) ExtractIthNode(i int) *Node[T] {
+	curNode := d.head
+
+	for i > 0 && curNode != nil {
+		curNode = curNode.Next
+		i--
+	}
+
+	return curNode
 }

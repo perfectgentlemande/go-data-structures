@@ -122,4 +122,25 @@ func main() {
 	fmt.Printf("right pop v: %v ok: %v\n", v, ok)
 	dll.PrintList()
 	dll.PrintListBackwards()
+
+	dll.RightPush(4)
+	dll.RightPush(5)
+	dll.RightPush(6)
+
+	fmt.Println("insert before:")
+	dll.PrintList()
+
+	node := dll.ExtractIthNode(3)
+	fmt.Printf("extracted %vth node: %v\n", 3, node.Val)
+
+	dll.InsertAfter(7, node)
+	dll.PrintList()
+	dll.PrintListBackwards()
+
+	node = dll.ExtractIthNode(6)
+	fmt.Printf("extracted %vth node: %v\n", 6, node.Val)
+	dll.InsertAfter(8, node)
+
+	dll.PrintList()
+	dll.PrintListBackwards()
 }
