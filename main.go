@@ -127,7 +127,7 @@ func main() {
 	dll.RightPush(5)
 	dll.RightPush(6)
 
-	fmt.Println("insert before:")
+	fmt.Println("insert after:")
 	dll.PrintList()
 
 	node := dll.ExtractIthNode(3)
@@ -141,6 +141,27 @@ func main() {
 	fmt.Printf("extracted %vth node: %v\n", 6, node.Val)
 	dll.InsertAfter(8, node)
 
+	dll.PrintList()
+	dll.PrintListBackwards()
+
+	fmt.Println("insert before:")
+	dll = doublylinkedlist.New[int]()
+	dll.LeftPush(3)
+	dll.LeftPush(2)
+	dll.LeftPush(1)
+	dll.RightPush(4)
+	dll.RightPush(5)
+	dll.RightPush(6)
+	dll.PrintList()
+	dll.PrintListBackwards()
+	node = dll.ExtractIthNode(2)
+	fmt.Printf("extracted %vth node: %v\n", 2, node.Val)
+	dll.InsertBefore(7, node)
+	dll.PrintList()
+	dll.PrintListBackwards()
+	node = dll.ExtractIthNode(0)
+	fmt.Printf("extracted %vth node: %v\n", 0, node.Val)
+	dll.InsertBefore(8, node)
 	dll.PrintList()
 	dll.PrintListBackwards()
 }

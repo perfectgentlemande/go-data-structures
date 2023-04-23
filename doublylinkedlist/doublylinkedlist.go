@@ -20,6 +20,10 @@ func (d *DoublyLinkedList[T]) InsertBefore(val T, selectedNode *Node[T]) {
 	}
 
 	selectedNode.Previous = newNode
+
+	if selectedNode == d.head {
+		d.head = newNode
+	}
 }
 func (d *DoublyLinkedList[T]) InsertAfter(val T, selectedNode *Node[T]) {
 	newNode := &Node[T]{
