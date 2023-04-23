@@ -9,4 +9,4 @@ Every structure is in its own package. Some structures based on another ones.
 - Linked list  
 - Stack (based on linked list)  
 - Queue (based on linked list)  
-- Doubly linked list (TODO)  
+- Doubly linked list
