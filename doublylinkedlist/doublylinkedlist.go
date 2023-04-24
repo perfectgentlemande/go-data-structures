@@ -24,6 +24,7 @@ func (d *DoublyLinkedList[T]) InsertBefore(val T, selectedNode *Node[T]) {
 	if selectedNode == d.head {
 		d.head = newNode
 	}
+	d.size++
 }
 func (d *DoublyLinkedList[T]) InsertAfter(val T, selectedNode *Node[T]) {
 	newNode := &Node[T]{
@@ -41,11 +42,13 @@ func (d *DoublyLinkedList[T]) InsertAfter(val T, selectedNode *Node[T]) {
 	if selectedNode == d.tail {
 		d.tail = newNode
 	}
+	d.size++
 }
 
 type DoublyLinkedList[T int | string] struct {
 	head *Node[T]
 	tail *Node[T]
+	size int
 }
 
 func New[T int | string]() *DoublyLinkedList[T] {
@@ -68,6 +71,15 @@ func (d *DoublyLinkedList[T]) PrintListBackwards() {
 		cur = cur.Previous
 	}
 }
+
+func (d *DoublyLinkedList[T]) Size() int {
+	return d.size
+}
+
+func (d *DoublyLinkedList[T]) IsEmpty() bool {
+	return d == nil || d.head == nil
+}
+
 func (d *DoublyLinkedList[T]) LeftPush(val T) {
 	newNode := &Node[T]{
 		Val: val,
@@ -82,6 +94,7 @@ func (d *DoublyLinkedList[T]) LeftPush(val T) {
 	newNode.Next = d.head
 	d.head.Previous = newNode
 	d.head = newNode
+	d.size++
 }
 
 func (d *DoublyLinkedList[T]) RightPush(val T) {
@@ -98,6 +111,7 @@ func (d *DoublyLinkedList[T]) RightPush(val T) {
 	d.tail.Next = newNode
 	newNode.Previous = d.tail
 	d.tail = newNode
+	d.size++
 }
 func (d *DoublyLinkedList[T]) LeftTop() (T, bool) {
 	if d == nil || d.head == nil {
@@ -131,6 +145,7 @@ func (d *DoublyLinkedList[T]) LeftPop() (T, bool) {
 		d.head.Previous = nil
 	}
 
+	d.size--
 	return cur, true
 }
 
@@ -150,6 +165,7 @@ func (d *DoublyLinkedList[T]) RightPop() (T, bool) {
 		d.tail.Next = nil
 	}
 
+	d.size--
 	return cur, true
 }
 
