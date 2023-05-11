@@ -10,7 +10,9 @@ type Deque[T int | string] struct {
 }
 
 func New[T int | string]() *Deque[T] {
-	return &Deque[T]{}
+	return &Deque[T]{
+		dll: doublylinkedlist.New[T](),
+	}
 }
 
 func (d *Deque[T]) Head() (T, bool) {
