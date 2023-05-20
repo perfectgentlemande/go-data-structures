@@ -41,3 +41,44 @@ func (n *Node[T]) CopyList() *Node[T] {
 
 	return newRoot
 }
+
+func (n *Node[T]) InvertList() *Node[T] {
+	if n == nil || n.Next == nil {
+		return nil
+	}
+
+	prev := n
+	cur := prev.Next
+	prev.Next = nil
+
+	for cur != nil {
+		next := cur.Next
+		cur.Next = prev
+		prev = cur
+		cur = next
+	}
+
+	return prev
+}
+
+func (n *Node[T]) InvertListWithCopying() *Node[T] {
+	if n == nil || n.Next == nil {
+		return nil
+	}
+
+	prev := &Node[T]{
+		Val: n.Val,
+	}
+
+	cur := prev.Next
+	for cur != nil {
+		prev = &Node[T]{
+			Val:  cur.Val,
+			Next: prev,
+		}
+
+		cur = cur.Next
+	}
+
+	return n
+}

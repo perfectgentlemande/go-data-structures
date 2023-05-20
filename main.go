@@ -1,6 +1,10 @@
 package main
 
-import "github.com/perfectgentlemande/go-data-structures/linkedlist"
+import (
+	"fmt"
+
+	"github.com/perfectgentlemande/go-data-structures/linkedlist"
+)
 
 func main() {
 	node := linkedlist.Node[int]{
@@ -25,5 +29,13 @@ func main() {
 	newNode.PrintList()
 	newNode.Val = 6
 	node.PrintList()
+
+	fmt.Println("before inversion")
+	newNode.PrintList()
+	newNode = newNode.InvertList()
+	fmt.Println("after inversion")
+	newNode.PrintList()
+
+	newNode = newNode.InvertListWithCopying()
 	newNode.PrintList()
 }
