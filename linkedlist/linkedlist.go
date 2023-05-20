@@ -1,6 +1,8 @@
 package linkedlist
 
-import "fmt"
+import (
+	"fmt"
+)
 
 type Node[T int | string] struct {
 	Val  T
@@ -14,4 +16,28 @@ func (n *Node[T]) PrintList() {
 		fmt.Println("val: ", cur.Val)
 		cur = cur.Next
 	}
+}
+
+func (n *Node[T]) CopyList() *Node[T] {
+	if n == nil {
+		return nil
+	}
+	cur := n
+
+	newRoot := &Node[T]{
+		Val: cur.Val,
+	}
+	newCur := newRoot
+
+	cur = cur.Next
+	for cur != nil {
+		newCur.Next = &Node[T]{
+			Val: cur.Val,
+		}
+
+		newCur = newCur.Next
+		cur = cur.Next
+	}
+
+	return newRoot
 }
