@@ -12,3 +12,5 @@ Every structure is in its own package. Some structures based on another ones.
 - Doubly linked list
 - Deque (based on doubly linked list)
 - Binary Tree (TODO with traversals)
+
+also TODO tests one day

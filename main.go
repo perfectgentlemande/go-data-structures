@@ -3,39 +3,36 @@ package main
 import (
 	"fmt"
 
-	"github.com/perfectgentlemande/go-data-structures/linkedlist"
+	"github.com/perfectgentlemande/go-data-structures/binarytree"
 )
 
 func main() {
-	node := linkedlist.Node[int]{
+	tree := binarytree.Node[int]{
 		Val: 1,
-		Next: &linkedlist.Node[int]{
+		Left: &binarytree.Node[int]{
 			Val: 2,
-			Next: &linkedlist.Node[int]{
-				Val: 3,
-				Next: &linkedlist.Node[int]{
-					Val: 4,
-					Next: &linkedlist.Node[int]{
-						Val: 5,
-					},
-				},
+			Left: &binarytree.Node[int]{
+				Val: 4,
+			},
+			Right: &binarytree.Node[int]{
+				Val: 5,
+			},
+		},
+		Right: &binarytree.Node[int]{
+			Val: 3,
+			Left: &binarytree.Node[int]{
+				Val: 6,
+			},
+			Right: &binarytree.Node[int]{
+				Val: 7,
 			},
 		},
 	}
 
-	node.PrintList()
-
-	newNode := node.CopyList()
-	newNode.PrintList()
-	newNode.Val = 6
-	node.PrintList()
-
-	fmt.Println("before inversion")
-	newNode.PrintList()
-	newNode = newNode.InvertList()
-	fmt.Println("after inversion")
-	newNode.PrintList()
-
-	newNode = newNode.InvertListWithCopying()
-	newNode.PrintList()
+	fmt.Println("pre")
+	binarytree.PrintTraversal(binarytree.TraversePreorder(&tree))
+	fmt.Println("in")
+	binarytree.PrintTraversal(binarytree.TraverseInorder(&tree))
+	fmt.Println("post")
+	binarytree.PrintTraversal(binarytree.TraversePostorder(&tree))
 }
